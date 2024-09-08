@@ -31,6 +31,8 @@ const { CheckForAuthenticationCookie } = require("./middleware/authorization")
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 app.use(express.static(path.resolve("./public")))
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
+
 
 app.use(CookieParser())
 app.use(CheckForAuthenticationCookie("uid"))
