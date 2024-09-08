@@ -31,7 +31,17 @@ const { CheckForAuthenticationCookie } = require("./middleware/authorization")
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 app.use(express.static(path.resolve("./public")))
-app.use('/images', express.static(path.join(__dirname, 'public/uploads')));
+app.use(express.static(path.join(__dirname, 'public'), {
+    setHeaders: function (res, path) {
+        // Set Cache-Control header to cache images for 1 day (86400 seconds)
+        if (path.endsWith('.jpg') || path.endsWith('.png') || path.endsWith('.jpeg') || path.endsWith('.gif')) {
+            res.setHeader('Cache-Control', 'public, max-age=86400'); // Cache for 1 day
+        }
+    }
+}));
+
+
+
 
 
 app.use(CookieParser())
