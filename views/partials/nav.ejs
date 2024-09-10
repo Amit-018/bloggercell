@@ -16,8 +16,9 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Amit Dubey
+              <%= locals.user.fullName %> <!-- Display the user's name or "Guest" -->
             </a>
+            
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="/user/logout">Log Out</a></li>
             </ul>

@@ -5,6 +5,7 @@ const secret ="cheen chapak dam dam"
 function createTokenForUser(user){
     const payload={
          _id:user.id,
+         fullName:user.fullName,
          email:user.email,
          role:user.role,
          profileImageUrl:user.profileImageUrl

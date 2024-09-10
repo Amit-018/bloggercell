@@ -27,7 +27,7 @@ const Blog = require("./model/blog")
 const staticRoute = require("./route/static")
 const blogRoute = require("./route/blog")
 const { CheckForAuthenticationCookie } = require("./middleware/authorization")
-
+  
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 app.use(express.static(path.resolve("./public")))
@@ -50,6 +50,9 @@ app.use(CheckForAuthenticationCookie("uid"))
 app.use("/user",staticRoute)
 app.use("/blog",blogRoute)
 
+
+
+
 app.get("/" , async(req,res)=>{
     const allblogs = await Blog.find({})
     res.render("home",{
@@ -58,6 +61,9 @@ app.get("/" , async(req,res)=>{
     })
    
 })
+
+
+
 
 app.listen(process.env.PORT || 3000, () => {
   console.log('Server running...');
